@@ -946,7 +946,7 @@ div.cartodb-tooltip-content-wrapper p {
 }
 /* MEDIA QUERIES */
 
-@media (max-width: 1232px) {
+@media (max-width: 1304px) {
   .navbar {
     max-width: 750px;
   }
@@ -995,7 +995,7 @@ div.cartodb-tooltip-content-wrapper p {
   }
 }
 
-@media (max-width: 778px) {
+@media (max-width: 852px) {
   .vuelos-internacionales-svg {
     transform: translateX(0%);
   }
@@ -1056,7 +1056,7 @@ div.cartodb-tooltip-content-wrapper p {
   }
 }
 
-@media (max-width: 622px) {
+@media (max-width: 646px) {
   .secOne {
     height: 1005px;
   }
@@ -1147,7 +1147,7 @@ div.cartodb-tooltip-content-wrapper p {
 
 @media (max-width: 492px) {
   .secOne {
-    height: 969px;
+    height: 839px;
   }
   .vuelos-nacionales-svg {
     max-width: 364px !important;
