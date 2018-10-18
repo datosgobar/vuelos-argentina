@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Facebook -->
+    <meta property="og:title" content="Los argentinos más conectados">
+    <meta property="og:description" content="El sector aerocomercial continúa creciendo y uniendo a los argentinos. Mirá cómo fueron todos los vuelos del año.">
+    <meta property="og:image" content="https://i.imgur.com/LmnIWew.png">
+    <meta property="og:url" content="https://juansalvatore.github.io/argentinan-flights-cartojs/">
+    <!-- Twitter -->
+    <meta name="twitter:title" content="Los argentinos más conectados">
+    <meta name="twitter:description" content="El sector aerocomercial continúa creciendo y uniendo a los argentinos. Mirá cómo fueron todos los vuelos del año.">
+    <meta name="twitter:image" content="https://i.imgur.com/8sZEF3O.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- title -->
+    <title>Vuelos</title>
+    <link rel="shortcut icon" href="https://argob.github.io/poncho/favicon.ico">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+      crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <!-- load leaflet css -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+    <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="./css/main.css">
+  </head>
+
+  <body>
+    <div class="navbar-container">
+      <div class="navbar">
+        <div class="navbar-content">
+          <img class="logo" src="./assets/logo presidencia-01.svg" alt="Ministerio de Modernización Presidencia de la Nación">
+          <span class="redes">
+            <p class="comparti">Compartí</p>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank" class="pull-right">
+              <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+            </a>
+            <a href="https://twitter.com/home?status=" target="_blank" class="pull-right">
+              <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrows up and down-->
+    <div id="scroll-buttons-container" class="scroll-buttons-container">
+      <span id="scroll-down" class="button-scroll">
+        <img id="arrow-down" class="arrow-down" src="./assets/flecha.svg" alt="scroll down">
+        <span id="arrow-text">Ir al mapa</span>
+      </span>
+      <span id="scroll-up" class="button-scroll">
+        <img id="arrow-up" class="arrow-up" src="./assets/flecha.svg" alt="scroll down">
+      </span>
+    </div>
+
+    <!-- Website content -->
+    <div id="content" class="content">
+      <!-- Block one -->
+      <div class="section section-one">
+        <div class="title-content fade-waiting">
+          <span class="title">Los argentinos más conectados</span>
+          <span class="title-paragraph">El sector aerocomercial continúa creciendo y uniendo a los argentinos. Mirá
+            cómo fueron todos los vuelos del año.</span>
+        </div>
+        <div id="mapOne"></div>
+      </div>
+
+      <!-- Block two -->
+      <div class="section section-two">
+        <!-- Map two -->
+        <div id="map"></div>
+        <!-- Routes selector -->
+        <span class="selector">
+          <div class="selector-content">
+            <div class="selector-title">
+              Rutas aéreas de Argentina
+            </div>
+            <span class="button-container fade-waiting">
+              <span id="cabotaje" class="button">
+                <span class="circle-indicator circle-locales"></span>Cabotaje</span>
+              <span id="internacional" class="button">
+                <span class="circle-indicator circle-internacionales"></span>Internacionales</span>
+              <span id="todos" class="button button-active">Todos</span>
+            </span>
+          </div>
+        </span>
+        <!-- Popup -->
+        <div id="popup-custom"></div>
+        <!-- Footer rutas dinamico -->
+        <div id="footer-info" class="footer-info">
+          <div class="footer-content">
+            <div id="footer-number">206.963</div>
+            <div class="footer-paragraph">
+              <div id="footer-rutas" class="footer-rutas">Vuelos totales entre sep17-sep18.</div>
+              <div id="footer-text" class="footer-text">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block three -->
+      <div class="section section-three">
+        <div class="scroll-box">
+
+          <!-- SECTION ONE -->
+          <div class="secFour count">
+            <div class="secFour-content">
+              <div class="secFour-title" style="font-size: 22px">
+                Durante el mes de septiembre de 2018 viajaron <span class="bold">1.326.571 pasajeros en vuelos de
+                  cabotaje</span>, un 13% más que el mismo mes del año anterior.
+              </div>
+              <img class="grafico-lineas-bariloche" src="./assets/grafico linea desktop.svg" alt="grafico vuelos a bariloche según el clíma">
+              <!-- mobile graph -->
+              <img class="grafico-lineas-bariloche-mobile" src="./assets/grafico linea mobile.svg" alt="grafico vuelos a bariloche según el clíma">
+            </div>
+          </div>
+
+          <!-- SECTION TWO -->
+          <div class="secTwo">
+            <div class="secOne-content secOne-content-two">
+              <img class="vuelos-nacionales-svg" src="./assets/mapa aeropuertos.svg" alt="">
+              <div class="secOne-text-container margin-top-text-container">
+                <div class="secOne-title">
+                  Aeropuertos que más crecieron
+                </div>
+                <div class="secOne-paragraph">
+                  Estos son los cinco aeropuertos que más crecieron en cantidad de pasajeros entre
+                  Sep-17 y Sep-18, respecto de igual período
+                  anterior.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION THREE -->
+          <div class="secOne">
+            <div class="secOne-content">
+              <div class="secOne-text-container wait-fade-arrow">
+                <div class="secOne-title">
+                  Conectamos el país para unir a los argentinos
+                </div>
+                <div class="secOne-paragraph">
+                  Se incorporaron nuevas rutas aéreas para mejorar la conectividad dentro del país de
+                  una manera federal, sin necesidad de pasar por Buenos Aires.
+                  <br />
+                  <br /><span class="line"></span><span class="rutas-text-reference">Nuevas rutas
+                    aéreas</span>
+                  <br /><span class="line grey"></span><span class="rutas-text-reference">Rutas
+                    aéreas hasta
+                    2016
+                  </span>
+                  <br />
+                  <div class="no-incluyen-rutas">No incluyen los aeropuertos del área metropolitana de Buenos
+                    Aires.</div>
+                </div>
+              </div>
+              <img class="vuelos-internacionales-svg" src="./assets/Mapa-rutas.svg" alt="">
+            </div>
+          </div>
+
+          <!-- SECTION FOUR -->
+          <div class="secTwo count">
+            <div class="secOne-content secOne-content-two">
+              <img class="vuelos-nacionales-svg" src="./assets/Mapa-mundo_Mesa de trabajo 1.svg" alt="">
+              <div class="secOne-text-container">
+                <div class="secOne-title">
+                  Nuevas conexiones hacia el mundo
+                </div>
+                <div class="secOne-paragraph">
+                  Nuevas ciudades con aeropuertos internacionales para poder recibir turistas del
+                  exterior y conocer el mundo sin necesidad
+                  de hacer escala en Buenos Aires. Sep-17 y Sep-18.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION FIVE -->
+          <div class="secFive">
+            <div class="secFive-content">
+              <div class="secFive-paragraph">
+                Este producto es posible gracias a los datos proporcionados por
+                <strong>
+                  <a target="_blank" href="https://www.eana.com.ar/" style="color: rgb(80, 146, 213)">EANA</a>.
+                </strong> Acá podés consultar el conjunto de datos original para que puedas explorarlos y hacer tus
+                propios análisis. Desarrollado por la
+                <strong><a href="#" style="color: rgb(80, 146, 213)">Secretaría de Modernización de la Nación.
+                    Presidencia de la Nación.</a></strong>
+              </div>
+              <span class="escribenos">¿Encontraste algún error? Por favor,
+                <strong>
+                  <a target="_blank" href="mailto:datos@modernizacion.gob.ar" style="color: rgb(80, 146, 213)">escribinos</a>.
+                </strong>
+              </span>
+            </div>
+          </div>
+          <div class="secSix">
+            <div class="secSix-content">
+              <div class="secSix-left">
+                <span class="redes-secSix">
+                  <img class="secSix-logo" src="./assets/logo transporte-01.svg" alt="Ministerio de modernización">
+                </span>
+                <img class="secSix-logo" src="./assets/logo subsecretaria modernizacion-01.svg" alt="Ministerio de modernización">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include libraries for GIF animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+    <!-- Load scripts -->
+    <script src="./js/buttons/buttons.js"></script>
+    <script src="./js/maps/mapOne.js"></script>
+    <script src="./js/maps/mapTwo.js"></script>
+    <script src="./js/scroll/scroll.js"></script>
+    <script src="./js/scroll/scrollEvents.js"></script>
+  </body>
+
+</html>

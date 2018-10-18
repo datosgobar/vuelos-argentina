@@ -1,0 +1,1261 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #222237;
+  overflow: hidden;
+  /* background-color: rgb(45, 45, 56); */
+}
+.cartodb-logo {
+  display: none !important;
+}
+.leaflet-bottom,
+.leaflet-right {
+  display: none !important;
+}
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+h3 {
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+  font-size: 15px;
+  color: rgb(168, 168, 169);
+  line-height: 22px;
+}
+
+#with-scroll {
+  height: 4000px;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(255, 255, 42, 0.6);
+  z-index: 25;
+  bottom: 100vh;
+  overflow: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+ul,
+li {
+  list-style: none;
+  color: #1995d3;
+  padding: 0;
+}
+a,
+u {
+  text-decoration: none;
+  color: #1995d3;
+}
+
+/* SOCIAL NETWORKS */
+#twitter:hover {
+  cursor: pointer;
+}
+#facebook:hover {
+  cursor: pointer;
+}
+/* SCROLL BUTTONS */
+.hidden-button {
+  opacity: 0;
+  cursor: default;
+}
+.hidden-button:hover {
+  cursor: default !important;
+}
+.scroll-buttons-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 40;
+  display: flex;
+  transition: all ease-in-out 300ms;
+  color: white;
+}
+
+#arrow-text {
+  opacity: 0;
+  transition: all ease-in-out 300ms;
+}
+
+.ir-al-mapa {
+  position: relative;
+  left: 46px;
+  width: 300px;
+  display: block;
+  top: 10px;
+  opacity: 1 !important;
+  transition: all ease-in-out 300ms;
+}
+
+.center-buttons {
+  left: 50%;
+}
+
+.up {
+  bottom: 120px;
+}
+
+.button-scroll {
+  width: 55px;
+  height: 55px;
+  border-radius: 50px;
+  margin-right: 0;
+  transition: all ease-in-out 300ms;
+  opacity: 0.5;
+}
+
+.button-scroll:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.fix-up {
+  position: fixed;
+  top: 100px;
+  height: 100px;
+}
+
+.remove-arrows {
+  display: none;
+}
+
+.arrow-down {
+  transform: scale(0.9) translateX(-42%);
+  transition: all ease-in-out 300ms;
+}
+.arrow-up {
+  transform: scale(0.9) rotate(180deg);
+  transition: all ease-in-out 300ms;
+}
+
+#map {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+}
+
+/* MAP ONE */
+#mapOne {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+}
+
+.title-content {
+  z-index: 20;
+  max-width: 681px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 100;
+}
+
+.title {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.title-paragraph {
+  position: relative;
+  top: 20px;
+  display: block;
+}
+
+.layer-picker {
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  top: 20px;
+  background-color: steelblue;
+  color: #fff;
+  font-size: inherit;
+  padding: 0.5em;
+  padding-right: 2.5em;
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button;
+  transition: all ease-in-out 300ms;
+  display: none;
+}
+
+.layer-picker:hover {
+  transform: scale(1.1);
+}
+
+.circle-indicator {
+  width: 10px;
+  height: 10px;
+  z-index: 15;
+  border-radius: 50px;
+  margin-right: 11px;
+}
+.circle-internacionales {
+  background-color: #1941b0;
+}
+.circle-locales {
+  background-color: #7189f1;
+}
+
+/* landing style */
+
+.navbar-container {
+  position: fixed;
+  display: flex;
+  top: 0;
+  justify-content: center;
+  width: 100%;
+  background-color: white;
+  height: 80px;
+  z-index: 20;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  position: fixed;
+  max-width: 1200px;
+  height: 80px;
+  background-color: white;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-bottom: 1px solid #ccc;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  width: 1200px;
+}
+
+.redes {
+  position: absolute;
+  right: 0px;
+  display: flex;
+  flex-direction: row;
+  width: 150px;
+  justify-content: space-between;
+  font-weight: 600;
+  z-index: 20;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.comparti {
+  color: #1995d3;
+  z-index: 39;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.rutas-text-reference {
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.logo {
+  position: relative;
+  width: 300px;
+}
+
+/* SELECTORES */
+.selector {
+  width: 100%;
+  position: relative;
+  height: 160px;
+  top: 0;
+  align-items: flex-end;
+  background-color: rgba(39, 39, 53, 1);
+  z-index: 15;
+  display: flex;
+  padding-bottom: 20px;
+  justify-content: center;
+  transition: all ease-in-out 300ms;
+}
+
+.selector-content {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.selector-title {
+  font-size: 25px;
+  padding-left: 20px;
+}
+
+.selector-two {
+  z-index: 15;
+}
+
+.button-container {
+  display: flex;
+  padding-right: 20px;
+}
+
+.button {
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 7px;
+  padding: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  transition: all ease-in-out 300ms;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+}
+
+.button-active {
+  background-color: white !important;
+  font-weight: 400;
+  color: rgba(39, 39, 53, 1) !important;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.section {
+  height: 100vh;
+  background-color: #222237;
+}
+
+/* FOOTER INFO */
+.footer-info {
+  width: 100%;
+  background-color: rgb(229, 229, 229);
+  height: 80px;
+  position: fixed;
+  bottom: 0;
+  z-index: 15;
+  transition: all ease-in-out 300ms;
+}
+
+.hide-footer {
+  opacity: 0;
+}
+
+.footer-content {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  width: 1200px;
+  display: flex;
+  align-items: center;
+  color: rgb(102, 102, 102);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#footer-number {
+  font-size: 50px;
+  font-weight: 600;
+  margin-left: 25px;
+  transition: all ease-in-out 300ms;
+}
+
+.number-color-internacionales {
+  color: rgb(31, 133, 217);
+}
+
+.number-color-locales {
+  color: rgb(110, 68, 191);
+}
+
+.line {
+  height: 3px;
+  width: 20px;
+  background-color: rgb(20, 150, 241);
+  z-index: 20;
+  display: inline-block;
+  transform: translateY(-164%);
+  margin-right: 15px;
+}
+
+.grey {
+  background-color: rgb(153, 152, 162);
+}
+
+.footer-text {
+  max-width: 821px;
+  font-size: 16px;
+  line-height: 24px;
+  display: inline;
+}
+
+.footer-rutas {
+  max-width: 447px;
+  font-size: 16px;
+  font-weight: 400;
+  display: inline;
+}
+
+.footer-paragraph {
+  margin-left: 17px;
+}
+
+/* SCROLL CONTENT */
+
+.content {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  transition: all ease-in-out 500ms;
+  background-color: #222237;
+}
+
+.section-one {
+  display: flex;
+  align-items: center;
+}
+
+.section-three {
+  width: 100%;
+  height: 100vh;
+  background-color: slateblue;
+}
+
+.scroll-box {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #222237;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+/* FIRST SCROLLABLE SECTION */
+.planeOne,
+.planeTwo,
+.planeThree {
+  width: 200px;
+  height: 200px;
+  /* background-color: steelblue; */
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: 100;
+  transform: translateY(25%);
+}
+
+.redes-secSix {
+  margin-bottom: 20px;
+  margin-right: 30px;
+}
+
+.plane-icon {
+  width: 60px;
+}
+
+.secOne {
+  position: relative;
+  top: 80px;
+  width: 100%;
+  height: 580px;
+  display: flex;
+  background-color: #2d2d43;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  transition: all ease-in-out 300ms;
+  overflow: hidden;
+}
+
+i {
+  position: relative;
+  z-index: 215125;
+  top: 60px;
+  color: #1995d3;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease-in-out 100ms;
+}
+.fa-2x {
+  font-size: 2em;
+  display: flex;
+  top: 0px;
+}
+
+i:hover {
+  color: white;
+  background-color: #1995d3;
+}
+
+.secThree {
+  position: relative;
+  top: 80px;
+  width: 100%;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  overflow: hidden;
+  transition: all ease-in-out 300ms;
+}
+
+.secFive {
+  position: relative;
+  top: 80px;
+  width: 100%;
+  height: 250px;
+  background-color: rgb(250, 250, 250);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  transition: all ease-in-out 300ms;
+}
+
+.secSix {
+  position: relative;
+  top: 80px;
+  width: 100%;
+  height: 220px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.07);
+  transition: all ease-in-out 300ms;
+}
+
+.secFive-content {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(117, 117, 117);
+  padding: 20px;
+}
+
+.secFive-title {
+  font-size: 23px;
+}
+
+.secFive-paragraph {
+  max-width: 790px;
+  line-height: 24px;
+}
+
+.secThree-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.torta {
+  width: 200px;
+  margin-left: 20px;
+}
+
+.escribenos {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.verCuriosidades-button {
+  padding: 15px;
+  padding-left: 23px;
+  padding-right: 22px;
+  background-color: rgb(80, 146, 213);
+  border-radius: 19px;
+  color: white;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.verCuriosidades-button:hover {
+  cursor: pointer;
+}
+
+.secOne-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.vuelos-internacionales-svg {
+  width: 400px;
+  transition: all ease-in-out 300ms;
+}
+
+.vuelos-nacionales-svg {
+  margin-top: -60px;
+  width: 430px;
+  margin-bottom: -50px !important;
+  transition: all ease-in-out 300ms;
+}
+
+.secOne-text-container {
+  max-width: 440px;
+  color: white;
+  margin-left: 38px;
+}
+
+.no-incluyen-rutas {
+  font-size: 14px;
+  width: 270px;
+  padding-left: 35px;
+  margin-top: 5px;
+  line-height: 21px;
+  opacity: 0.6;
+}
+
+.secOne-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.secOne-paragraph {
+  line-height: 29px;
+  font-size: 20px;
+  font-weight: 200;
+  color: rgb(192, 192, 192);
+}
+
+.secFour-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #2d2d43;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.secFour-title {
+  font-size: 28px;
+  max-width: 838px;
+  font-weight: 200;
+  color: white;
+  line-height: 40px;
+  margin-bottom: 50px;
+}
+.tortaOne {
+  margin: 0;
+}
+.secThree-title {
+  font-size: 30px;
+  color: white;
+  margin-bottom: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.secFour-paragraph {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  line-height: 27px;
+  font-size: 18px;
+  font-weight: 200;
+  color: rgb(192, 192, 192);
+}
+
+.secFour-subtitle {
+  display: block;
+  font-weight: 400;
+}
+
+.grafico-lineas-bariloche,
+.grafico-lineas-iguazu {
+  max-width: 700px;
+}
+
+.secTwo {
+  position: relative;
+  top: 80px;
+  width: 100%;
+  height: 570px;
+  /* background-color: #2d2d43; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  overflow: hidden;
+  transition: all ease-in-out 300ms;
+}
+.secFour {
+  position: relative;
+  top: 80px;
+  width: 100%;
+  height: 600px;
+  background-color: #2d2d43;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.subtitle-two {
+  margin-top: 60px;
+}
+
+.secSix-content {
+  width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.secSix-right {
+  font-size: 19px;
+}
+
+/* SECOND SCROLLABLE SECTION */
+.block-a,
+.block-b,
+.block-c {
+  width: 30%;
+  height: 150px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: 100;
+  transform: translateY(25%);
+}
+
+.number {
+  font-size: 80px;
+  color: rgb(84, 164, 218);
+}
+
+.paragraph-secTwo {
+  position: absolute;
+  top: 140px;
+  width: 650px;
+  color: white;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.secSix-logo {
+  width: 300px;
+}
+
+.secSix-left {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* SCROLL ANIMATIONS */
+.fade-waiting {
+  /* transform: translate(-50%, 70%) !important; */
+  opacity: 0;
+  transition: all ease-in-out 1800ms;
+}
+
+.fade-in {
+  opacity: 1;
+  /* transform: translate(-50%, 0%) !important; */
+}
+
+/* MOBILE LINE GRAPHS */
+.grafico-lineas-bariloche-mobile,
+.grafico-lineas-iguazu-mobile {
+  display: none;
+  margin: 15px;
+}
+
+/* POPUP */
+/* gives the tooltip a margin from the pointer */
+body > div.cartodb-tooltip {
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+  border-radius: 5px;
+}
+
+.title-popup {
+  text-align: left;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  margin-top: 0px;
+}
+
+.popup-row {
+  display: flex;
+}
+
+.margin-top-text-container {
+  margin-top: 40px;
+}
+
+#popup-custom {
+  position: relative;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background-color: white;
+  z-index: 100;
+  border: 3px solid white;
+  display: none;
+}
+
+.arribos-popup {
+  margin-left: 25px;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+.categoria-popup {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: 'Roboto', sans-serif;
+}
+hr {
+  opacity: 0.3;
+}
+
+.close-popup {
+  width: 15px;
+  display: flex;
+  position: relative;
+  float: right;
+  top: 7px;
+  margin-right: 10px;
+}
+/* gives to the tooltip different styles */
+div.cartodb-tooltip-content-wrapper {
+  padding: 10px;
+  max-width: auto;
+  color: black;
+  text-align: left;
+  background-color: #fff !important;
+  border-radius: 5px !important;
+}
+
+/* set styles to the <p> tag of the tooltip */
+div.cartodb-tooltip-content-wrapper p {
+  color: black !important;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Pasajeros más conectados */
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+}
+.box-container-section {
+  display: flex;
+}
+.box-section {
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  color: rgb(192, 192, 192);
+  padding: 10px;
+  text-align: center;
+}
+.box-number {
+  font-size: 30px;
+  margin-top: 35px;
+  margin-bottom: 10px;
+  color: rgb(80, 146, 213);
+}
+.box-text {
+  width: 215px;
+}
+.icon {
+  width: 100px;
+}
+.icon-rutas {
+  width: 154px;
+}
+/* MEDIA QUERIES */
+
+@media (max-width: 1232px) {
+  .navbar {
+    max-width: 750px;
+  }
+  .secSix-content {
+    max-width: 750px;
+  }
+  .footer-content {
+    max-width: 750px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .secOne {
+    height: 985px;
+    align-items: flex-end;
+    padding-bottom: 20px;
+  }
+  .secOne-content {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+  }
+  .secOne-content-two {
+    flex-direction: column;
+  }
+  .vuelos-nacionales-svg {
+    margin-top: -75px;
+  }
+  .secOne-title {
+    margin-top: 40px;
+  }
+  .secOne-text-container {
+    margin-left: 0px;
+  }
+  .secTwo {
+    height: 827px;
+  }
+  .vuelos-internacionales-svg {
+    position: absolute;
+    top: 25px;
+    margin-bottom: -403px;
+    max-width: 500px !important;
+  }
+
+  .vuelos-nacionales-svg {
+    max-width: 530px !important;
+  }
+}
+
+@media (max-width: 778px) {
+  .vuelos-internacionales-svg {
+    transform: translateX(0%);
+  }
+  .navbar {
+    max-width: 550px;
+  }
+  .footer-text {
+    display: none;
+  }
+  .footer-content {
+    justify-content: center;
+  }
+  .footer-number {
+    margin: 0;
+  }
+  .footer-info {
+    height: 60px;
+  }
+  .secSix-content {
+    max-width: 550px;
+  }
+  .grafico-torta-container {
+    width: 200px;
+  }
+  .torta {
+    margin: 0;
+    margin-top: 20px;
+  }
+  .secThree {
+    height: 1064px;
+  }
+  .selector {
+    height: 190px;
+  }
+  .up {
+    bottom: 80px;
+  }
+  .selector-title {
+    margin: 0;
+    padding: 0;
+  }
+  .button-container {
+    margin-top: 10px;
+  }
+  .selector-content {
+    justify-content: center;
+    align-items: center;
+    width: 710px;
+  }
+  .box-container-section {
+    flex-direction: column;
+  }
+  .secSix-left {
+    flex-direction: column;
+  }
+  .redes-secSix {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 622px) {
+  .secOne {
+    height: 1005px;
+  }
+  .secTwo {
+    height: 794px;
+  }
+  .vuelos-nacionales-svg {
+    max-width: 419px !important;
+  }
+  .vuelos-internacionales-svg {
+    width: 380px;
+  }
+  .navbar {
+    max-width: 550px;
+  }
+  .redes {
+    display: none;
+  }
+  .logo {
+    position: absolute;
+    margin-left: 0px;
+  }
+  .button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+    padding: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .button-container {
+    max-width: 300px;
+  }
+  .selector {
+    height: 181px;
+    padding: 10px;
+  }
+  .selector-content {
+    max-width: 311px;
+  }
+  .secFour {
+    height: 1000px;
+  }
+
+  .grafico-lineas-iguazu,
+  .grafico-lineas-bariloche {
+    display: none;
+  }
+
+  .grafico-lineas-iguazu-mobile,
+  .grafico-lineas-bariloche-mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 574px) {
+  .navbar {
+    max-width: 300px;
+  }
+  .title-content {
+    left: 0;
+    transform: none;
+    padding: 20px;
+    top: 210px;
+  }
+  .secSix-content {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 400px;
+  }
+  .secSix {
+    height: 290px;
+  }
+
+  .secSix-left {
+    align-items: center;
+  }
+  .secSix-right {
+    text-align: center;
+  }
+  .secThree-title {
+    text-align: center;
+  }
+}
+
+@media (max-width: 492px) {
+  .secOne {
+    height: 969px;
+  }
+  .vuelos-nacionales-svg {
+    max-width: 364px !important;
+    margin-top: -175px;
+  }
+  .secFour {
+    height: 800px;
+  }
+  .vuelos-internacionales-svg {
+    width: 348px;
+  }
+  .footer-content {
+    flex-direction: column;
+  }
+  .footer-info {
+    height: 73px;
+  }
+  #footer-number {
+    margin-left: 0;
+    font-size: 37px;
+  }
+  .footer-rutas {
+    margin-top: -9px;
+    white-space: nowrap;
+    margin-left: -27px;
+    position: relative;
+    justify-content: center;
+    transform: translateX(-50%);
+    justify-self: center;
+  }
+}
+
+@media (max-width: 425px) {
+  .secOne-paragraph {
+    font-size: 17px;
+    line-height: 22px;
+  }
+  .secOne-title {
+    font-size: 25px;
+  }
+  .secThree-title {
+    font-size: 25px;
+  }
+  .secFive {
+    height: 426px;
+  }
+  .secThree {
+    height: 1064;
+  }
+  .secFour {
+    height: 800px;
+  }
+  .secFour-title {
+    font-size: 23px;
+    line-height: 32px;
+  }
+  .title-content {
+    top: 120px;
+  }
+}
+
+@media (max-width: 375px) {
+  .secOne {
+    height: 746px;
+  }
+  .vuelos-internacionales-svg {
+    width: 262px;
+    transform: translateX(0%);
+  }
+  .vuelos-nacionales-svg {
+    margin-top: -70px;
+    max-width: 310px !important;
+  }
+  .secTwo {
+    height: 628px;
+  }
+}
+
+@media (max-width: 320px) {
+  .secFive {
+    height: 466px;
+  }
+  .secFour {
+    height: 730px;
+  }
+  .secFour-title {
+    font-size: 23px;
+    line-height: 32px;
+  }
+  .secOne {
+    height: 760px;
+  }
+}
+
+/* MAP THREE */
+#mapThree {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+iframe {
+  position: relative;
+  top: -160px;
+  pointer-events: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+}
