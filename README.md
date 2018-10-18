@@ -8,6 +8,7 @@ El sector aerocomercial continúa creciendo y uniendo a los argentinos. Esta web
 ## Tecnologías usadas 
 
 - [Carto.js](https://carto.com/docs/carto-engine/carto-js/) - Librería de JavaScript para crear visualizaciónes con CARTO.
+- [Leaflet](https://leafletjs.com/) - Librería de JavaScript para crear mapas interactivos.
 - [ScrollMagic](http://scrollmagic.io/) - Librería de JavaScript para interacciones con scroll.
 - [HTML](#)
 - [CSS](#) 
