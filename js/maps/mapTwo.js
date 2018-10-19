@@ -4,6 +4,8 @@ let lat = -65.381592
 var map = new L.Map('map', {
   center: [lon, lat],
   zoom: 3,
+  minZoom: 3,
+  maxZoom: 7
 })
 
 L.tileLayer(
