@@ -9,7 +9,7 @@ $(document).ready(function() {
   const content = [
     {
       route: todos,
-      number: '206.963',
+      number: '352.608',
       coloredText: 'Vuelos totales entre sep17-sep18.',
       text: '',
     },
