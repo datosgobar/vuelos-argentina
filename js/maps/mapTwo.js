@@ -5,12 +5,10 @@ var map = new L.Map('map', {
   center: [lon, lat],
   zoom: 3,
   minZoom: 3,
-  maxZoom: 7
+  maxZoom: 7,
 })
 
-L.tileLayer(
-  'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png'
-).addTo(map)
+L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png').addTo(map)
 
 var layerSource = {
   https: true,
@@ -96,9 +94,9 @@ cartodb
               <p class="title-popup"><strong>{{pais}}</strong></p>
               <p><span class="categoria-popup">Aeropuerto /</span> {{name}}</p>
               <hr />
-              <p><span class="categoria-popup">Partidas /</span> {{partidas}}</p>
+              <p><span class="categoria-popup">Partidas 2017 /</span> {{partidas}}</p>
               <hr />
-              <p><span class="categoria-popup">Arribos /</span> {{arribos}}</p>
+              <p><span class="categoria-popup">Arribos 2017 /</span> {{arribos}}</p>
           </div>
       `,
       width: 400,
@@ -108,11 +106,7 @@ cartodb
 
     $('body').append(tooltip.render().el)
 
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    ) {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       layer.on('featureClick', function(e, latlng, pos, data) {
         let arribos = data.arribos
         let partidas = data.partidas
